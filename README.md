@@ -13,3 +13,9 @@ Existem meteoros marrons e cinzas. Os meteoros cinzas são mais rápidos que os 
 - Aumentando o número de combustíveis necessários (NUM_FUEL);
 - Aumentando o número de meteoros (LIMIT_ENEMIES);
 - Alterando a velocidade dos meteoros (SPEED_METEOR_GRAY e SPEED_METEOR_BROWN)
+
+## Execução
+Para executar o código:
+- Faça o download do projeto
+- Instale as dependências (pip install -r requeriments.txt)
+- Execute no terminal: python intro.py
