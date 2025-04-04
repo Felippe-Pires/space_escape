@@ -7,6 +7,13 @@ WIDTH = 1000
 HEIGHT = 600
 NUM_FUEL = 3
 
+# Limit number os enemies
+LIMIT_ENEMIES = 8
+
+# Enemies Speed
+SPEED_METEOR_GRAY = 3
+SPEED_METEOR_BROWN = 2.5
+
 # Game state
 game_state = "menu"  # Options: "menu", "play" ou "sound"
 game_over = False  # Control end of game
@@ -47,20 +54,21 @@ def draw_sprites():
 def spawn_fuel():
     global fuel, show_fuel
     # Put fuel in top of screen
-    fuel = Sprite(Actor("fuel", (random.randint(50, WIDTH - 50), -500)), speed_x=2, speed_y=2)
+    fuel = Sprite(Actor("fuel", (random.randint(50, WIDTH - 50), -500)), speed_x=1.5, speed_y=1.5)
     show_fuel = True
 
 def spawn_enemies():
     global meteor_list
     # Create new meteor
     x_position = random.randint(50, WIDTH - 50)  # Random Position
-    speed_enemy = 2.5 if len(meteor_list) % 2 == 0 else 3
+    speed_enemy = SPEED_METEOR_BROWN if len(meteor_list) % 2 == 0 else SPEED_METEOR_GRAY
     image = 'meteor_slow' if len(meteor_list) % 2 == 0 else 'meteor_fast'
 
     # New sprite
     new_object = Sprite(Actor(image, (x_position, 20)), speed_x=speed_enemy, speed_y=speed_enemy)
     # Enemies list
-    meteor_list.append(new_object)
+    if len(meteor_list) < LIMIT_ENEMIES:
+        meteor_list.append(new_object)
 
 
 # Schedule object create
